@@ -1,0 +1,9 @@
+# Generated / local
+clone.png
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+.env
+.env.*
+*.local

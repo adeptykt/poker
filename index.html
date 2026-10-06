@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>NLH Poker</title>
+<link rel="stylesheet" href="css/styles.css?v=20261007e">
+</head>
+<body>
+<div id="app">
+
+  <!-- ======== Заголовок окна ======== -->
+  <header class="titlebar">
+    <div class="title"><span class="logo-mark">&#9824;</span> NLH Poker <span class="ver">- v228</span></div>
+    <div class="win-btns">
+      <button class="icon-btn meter" id="btnSound" title="Звук" aria-label="Звук">
+        <svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10H4z" fill="currentColor" stroke="none"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+        <i class="bars"><b></b><b></b><b></b><b></b></i>
+      </button>
+      <button class="icon-btn" id="btnMin" title="Свернуть" aria-label="Свернуть"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+      <button class="icon-btn" id="btnMax" title="Развернуть" aria-label="Развернуть"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg></button>
+      <button class="icon-btn close" id="btnClose" title="Закрыть" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </header>
+
+  <!-- ======== Сцена ======== -->
+  <main class="stage">
+
+    <!-- Боковые рейки -->
+    <div class="rail rail-left">
+      <button class="rail-btn" id="btnMenu" title="Меню" aria-label="Меню">
+        <svg viewBox="0 0 24 24"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
+      </button>
+      <button class="rail-btn" id="btnHistory" title="История раздач" aria-label="История раздач">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.4V12l3.2 1.9"/></svg>
+      </button>
+      <span class="rail-dots"><i></i><i></i><i></i><i></i><i></i></span>
+      <button class="rail-btn green" id="btnNewGame" title="Новая раздача" aria-label="Новая раздача">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div class="rail rail-right">
+      <button class="rail-btn" id="btnStats" title="Статистика" aria-label="Статистика">
+        <svg viewBox="0 0 24 24"><path d="M5 19V9M10 19V5M15 19v-7M20 19v-4"/></svg>
+      </button>
+      <button class="rail-btn" id="btnSettings" title="Настройки" aria-label="Настройки">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.8v2.4M12 17.8v2.4M4.8 7.9l2.1 1.2M17.1 14.9l2.1 1.2M4.8 16.1l2.1-1.2M17.1 9.1l2.1-1.2"/></svg>
+      </button>
+      <span class="rail-dots"><i></i><i></i><i></i><i></i><i></i></span>
+      <button class="rail-btn green" id="btnChat" title="Чат" aria-label="Чат">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16v11H10l-6 4V5z"/></svg>
+      </button>
+    </div>
+
+    <!-- Дилер + бейджи -->
+    <section class="host">
+      <button class="badge badge-tips" id="btnTips" title="Free tips">
+        <span class="tips-free">FREE</span>
+        <svg class="tips-heart" viewBox="0 0 46 44" aria-hidden="true">
+          <defs>
+            <linearGradient id="tipsG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ff6cb0"/><stop offset="55%" stop-color="#e0246f"/><stop offset="1" stop-color="#9d0d49"/>
+            </linearGradient>
+          </defs>
+          <path d="M23 42C11.2 32.3 2.6 24.2 2.6 15.6 2.6 7.2 8.6 1.6 15.6 1.6c3.6 0 6.3 1.7 7.4 4.4 1.1-2.7 3.8-4.4 7.4-4.4 7 0 13 5.6 13 14 0 8.6-8.6 16.7-20.4 26.4z"
+                fill="url(#tipsG)" stroke="#ffd7ea" stroke-width="1.1"/>
+        </svg>
+        <b>TIPS</b>
+      </button>
+
+      <div class="lucky">
+        <svg class="lucky-arc" viewBox="0 0 104 24" aria-hidden="true">
+          <defs><path id="luckyArcPath" d="M5 23C5 7 27 1 52 1s47 6 47 22" fill="none"/></defs>
+          <text class="arc-text" text-anchor="middle"><textPath href="#luckyArcPath" startOffset="50%">Lucky Draw</textPath></text>
+        </svg>
+        <div class="lucky-row">
+          <button class="badge badge-lucky" id="btnLucky" title="Lucky Draw">
+            <span class="lucky-wheel">
+              <svg viewBox="0 0 48 48" class="wheel">
+                <defs>
+                  <radialGradient id="luckyG" cx="50%" cy="35%" r="70%">
+                    <stop offset="0" stop-color="#a86bff"/><stop offset="1" stop-color="#4b1d9c"/>
+                  </radialGradient>
+                </defs>
+                <circle cx="24" cy="24" r="22" fill="url(#luckyG)"/>
+                <g stroke="#e6d4ff" stroke-width="1" opacity=".5">
+                  <path d="M24 2v44M2 24h44M8.5 8.5l31 31M39.5 8.5l-31 31"/>
+                  <path d="M11.6 6.2l24.8 35.6M36.4 6.2L11.6 41.8" opacity=".6"/>
+                </g>
+                <circle cx="24" cy="24" r="22" fill="none" stroke="#c9a6ff" stroke-width="1.2" opacity=".65"/>
+                <circle cx="24" cy="24" r="12" fill="#2b0f52" opacity=".85"/>
+              </svg>
+              <b>$2,200</b>
+            </span>
+          </button>
+          <button class="badge badge-next" id="btnNext" aria-label="Далее">
+            <svg viewBox="0 0 14 20" aria-hidden="true"><path d="M3 2l8 8-8 8"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Дилер (за столом: низ обрезается краем стола).
+         Базовая геометрия продублирована инлайном, чтобы дилер не пропадал,
+         даже если браузер держит старую копию styles.css. -->
+    <div class="dealer" id="dealer" title="Дилер"
+         style="position:absolute;left:50%;top:22px;transform:translateX(-50%);z-index:2">
+      <img class="dealer-img" src="assets/dealer.png?v=20261007a" alt="Дилер" draggable="false"
+           style="width:100%;height:100%;display:block;object-fit:cover;object-position:50% 0">
+    </div>
+
+    <!-- ======== Стол ======== -->
+    <section class="table" id="table">
+      <div class="rail-rim">
+        <div class="felt">
+          <div class="center">
+            <div class="pot-row" id="potWrap">
+              <span class="pile pile--md" id="potChips" style="--n:2"></span><span class="pot-amount" id="potAmount">0</span>
+            </div>
+            <div class="bank-line">Банк: <b id="bankAmount">0</b></div>
+            <div class="board" id="board"></div>
+            <div class="info-line">
+              <span id="blindsInfo">Блайнды: 1,000/2,000 ante: 1,000</span>
+              <button class="info-btn" id="btnInfo" aria-label="Инфо">i</button>
+            </div>
+            <div class="watermark">
+              <div class="logo">NLH<em>POKER</em></div>
+              <div class="tid" id="tableId">ID: 00000000-00000000-00000000-0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seats" id="seats"></div>
+    </section>
+
+    <!-- Таймер хода героя -->
+    <div class="turn-chip" id="turnChip" hidden>
+      <span class="chip-ico"></span><b id="turnSec">10</b><small>s</small>
+    </div>
+
+    <!-- ======== Панель действий ======== -->
+    <section class="actionbar" id="actionbar" hidden>
+      <div class="act-head">
+        <span class="act-turn" id="actTurn">Ваш ход</span>
+        <button class="act-auto" id="btnAuto" title="Авто-чек/колл">AUTO</button>
+      </div>
+      <div class="act-row">
+        <button class="btn btn-fold" id="btnFold"><span>Фолд</span></button>
+        <button class="btn btn-call" id="btnCall"><span>Чек</span></button>
+        <button class="btn btn-raise" id="btnRaise"><span>Рейз</span></button>
+      </div>
+      <div class="raise-row" id="raiseRow">
+        <div class="raise-top">
+          <span class="raise-min" id="raiseMin">0</span>
+          <span class="raise-now">Рейз до <b id="raiseTo">0</b></span>
+          <span class="raise-max" id="raiseMax">0</span>
+        </div>
+        <input type="range" id="raiseSlider" min="0" max="1000" value="0" step="10" aria-label="Размер повышения">
+        <div class="presets">
+          <button class="chip" data-frac="0.5">1/2 БАНКА</button>
+          <button class="chip" data-frac="0.75">2/3 БАНКА</button>
+          <button class="chip" data-frac="1">БАНК</button>
+          <button class="chip" data-frac="2">2x БАНКА</button>
+          <button class="chip chip-allin" data-frac="999">ОЛЛ-ИН</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======== Оверлеи ======== -->
+  <div class="toast" id="toast" hidden></div>
+  <div class="win-banner" id="winBanner" hidden><b id="winText"></b><span id="winHand"></span></div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box">
+      <div class="modal-title" id="modalTitle">Меню</div>
+      <div class="modal-body" id="modalBody"></div>
+      <button class="btn btn-primary" id="modalClose">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/evaluator.js?v=20261007a"></script>
+<script src="js/deck.js?v=20261007a"></script>
+<script src="js/ai.js?v=20261007a"></script>
+<script src="js/engine.js?v=20261007a"></script>
+<script src="js/ui.js?v=20261007e"></script>
+</body>
+</html>
